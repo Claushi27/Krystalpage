@@ -17,22 +17,23 @@
 
 /* Basic reset and general styles */
 body {
-    font-family: 'Montserrat', sans-serif; /* Changed default font for readability */
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--background-light);
     color: var(--text-dark);
     line-height: 1.6;
     scroll-behavior: smooth;
-    overflow-x: hidden; /* Prevent horizontal scroll due to decorations */
+    overflow-x: hidden;
+    position: relative; /* Needed for the floating hearts container */
 }
 
 h1, h2 {
-    font-family: 'Montserrat', sans-serif; /* Use Montserrat for main titles - improved readability */
+    font-family: 'Montserrat', sans-serif;
     color: var(--primary-color);
     text-align: center;
     margin-bottom: 20px;
-    font-weight: 700; /* Make them bold for better readability */
+    font-weight: 700;
 }
 
 h1 {
@@ -44,15 +45,15 @@ h1 {
 h2 {
     font-size: 2.8em;
     margin-top: 40px;
-    color: var(--accent-color-1); /* Blue for section titles */
+    color: var(--accent-color-1);
 }
 
 h3 {
-    font-family: 'Montserrat', sans-serif; /* Use Montserrat for sub-titles too, but perhaps lighter weight */
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.8em;
-    color: var(--primary-color); /* Purple for sub-titles */
+    color: var(--primary-color);
     margin-bottom: 10px;
-    font-weight: 600; /* Slightly less bold than h1/h2 */
+    font-weight: 600;
 }
 
 p {
@@ -64,6 +65,53 @@ p {
     margin: 0 auto;
     padding: 20px;
 }
+
+/* Secciones inicialmente ocultas */
+#main-content-wrapper, footer {
+    display: none;
+}
+
+/* Sección de introducción interactiva */
+#intro-container {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.interactive-question {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.interactive-question h2 {
+    color: var(--heart-color);
+    margin-bottom: 15px;
+}
+
+#button-container .btn {
+    background-color: var(--heart-color);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin: 5px;
+}
+
+#button-container .btn:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
 
 /* Hero Section (Main Header) */
 .hero-section {
@@ -78,9 +126,9 @@ p {
 
 /* Subtle heart pattern decoration */
 .hero-section::before, .hero-section::after {
-    content: '\2764'; /* Unicode heart character */
-    font-size: 100px; /* Large hearts */
-    color: rgba(255, 255, 255, 0.1); /* Very subtle white hearts */
+    content: '\2764';
+    font-size: 100px;
+    color: rgba(255, 255, 255, 0.1);
     position: absolute;
     z-index: 0;
     animation: floatHeart 10s infinite ease-in-out;
@@ -107,7 +155,7 @@ p {
 
 
 .subtitle {
-    font-family: 'Dancing Script', cursive; /* Keep romantic font for subtitle */
+    font-family: 'Dancing Script', cursive;
     font-size: 1.8em;
     margin-top: 10px;
     color: rgba(255, 255, 255, 0.9);
@@ -149,11 +197,11 @@ p {
 .prologue-image img {
     max-width: 100%;
     height: auto;
-    border-radius: 50%; /* Make them circular */
-    border: 5px solid var(--accent-color-3); /* Brown border */
+    border-radius: 50%;
+    border: 5px solid var(--accent-color-3);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    object-fit: cover; /* Ensure image fills circular space */
-    width: 200px; /* Fixed size for circular images */
+    object-fit: cover;
+    width: 200px;
     height: 200px;
 }
 
@@ -164,10 +212,10 @@ p {
 }
 
 .transition-text {
-    font-family: 'Dancing Script', cursive; /* Romantic font for transition */
+    font-family: 'Dancing Script', cursive;
     font-size: 1.8em;
     font-weight: bold;
-    color: var(--accent-color-2); /* Dark grey */
+    color: var(--accent-color-2);
     margin-top: 50px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.8);
@@ -222,41 +270,39 @@ p {
     justify-content: space-between;
     margin-bottom: 80px;
     position: relative;
-    align-items: center; /* Vertically align items */
+    align-items: center;
 }
 
 .timeline-item:nth-child(odd) {
-    /* Default: content on right */
-    padding-left: calc(50% + 50px); /* Space for icon and line */
+    padding-left: calc(50% + 50px);
     padding-right: 0;
 }
 
 .timeline-item:nth-child(even) {
-    /* Reverse: content on left */
     flex-direction: row-reverse;
-    padding-right: calc(50% + 50px); /* Space for icon and line */
+    padding-right: calc(50% + 50px);
     padding-left: 0;
 }
 
 .timeline-date {
-    flex: 0 0 150px; /* Fixed width for the date */
+    flex: 0 0 150px;
     text-align: center;
     font-weight: bold;
     color: var(--accent-color-2);
     font-size: 1.2em;
-    align-self: center; /* Center align date vertically */
-    position: absolute; /* Position date relative to timeline-item */
+    align-self: center;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 2; /* Ensure date is on top */
+    z-index: 2;
 }
 
 .timeline-item:nth-child(odd) .timeline-date {
-    left: 0; /* Date on the far left */
+    left: 0;
 }
 
 .timeline-item:nth-child(even) .timeline-date {
-    right: 0; /* Date on the far right */
+    right: 0;
 }
 
 .timeline-icon {
@@ -266,19 +312,18 @@ p {
     transform: translate(-50%, -50%);
     width: 60px;
     height: 60px;
-    background-color: var(--primary-color); /* Morado */
+    background-color: var(--primary-color);
     color: var(--text-light);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2em;
-    border: 5px solid var(--background-light); /* Light border to stand out */
+    border: 5px solid var(--background-light);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    z-index: 1; /* Ensure icon is above the line and content's shadow */
+    z-index: 1;
 }
 
-/* Icon colors - using preferred colors */
 .timeline-icon .fa-heart,
 .timeline-icon .fa-video,
 .timeline-icon .fa-paw,
@@ -286,22 +331,21 @@ p {
 .timeline-icon .fa-comments-dollar,
 .timeline-icon .fa-handshake,
 .timeline-icon .fa-star,
-.timeline-icon .fa-headset, /* New icon for Discord/calls */
-.timeline-icon .fa-heart-circle-check, /* New icon for deeper love */
-.timeline-icon .fa-camera-retro, /* New icon for photos */
-.timeline-icon .fa-heart-pulse, /* New icon for growing love */
-.timeline-icon .fa-infinity, /* New icon for infinity */
-.timeline-icon .fa-comments, /* General comments icon */
-.timeline-icon .fa-gift, /* Gift icon */
-.timeline-icon .fa-laugh-squint, /* Laughing icon for jokes */
-.timeline-icon .fa-language, /* Language icon for Tandem */
-.timeline-icon .fa-comment-dots /* New icon for WeChat compliment */ {
-    color: var(--text-light); /* White icons by default */
+.timeline-icon .fa-headset,
+.timeline-icon .fa-heart-circle-check,
+.timeline-icon .fa-camera-retro,
+.timeline-icon .fa-heart-pulse,
+.timeline-icon .fa-infinity,
+.timeline-icon .fa-comments,
+.timeline-icon .fa-gift,
+.timeline-icon .fa-laugh-squint,
+.timeline-icon .fa-language,
+.timeline-icon .fa-comment-dots {
+    color: var(--text-light);
 }
 
-/* Optional: Different colors for icons based on primary/accent for variety */
-.timeline-item:nth-child(odd) .timeline-icon { background-color: var(--primary-color); } /* Purple */
-.timeline-item:nth-child(even) .timeline-icon { background-color: var(--accent-color-1); } /* Blue */
+.timeline-item:nth-child(odd) .timeline-icon { background-color: var(--primary-color); }
+.timeline-item:nth-child(even) .timeline-icon { background-color: var(--accent-color-1); }
 
 
 .timeline-content {
@@ -310,9 +354,9 @@ p {
     padding: 25px;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
-    position: relative; /* For the arrow */
+    position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 120px; /* Ensure content box has a minimum height */
+    min-height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -323,14 +367,13 @@ p {
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
-/* Adjust margin to ensure content doesn't overlap icon */
 .timeline-item:nth-child(odd) .timeline-content {
-    margin-left: 40px; /* Increased space from central line */
+    margin-left: 40px;
     margin-right: 0;
 }
 
 .timeline-item:nth-child(even) .timeline-content {
-    margin-right: 40px; /* Increased space from central line */
+    margin-right: 40px;
     margin-left: 0;
 }
 
@@ -340,7 +383,7 @@ p {
     content: '';
     position: absolute;
     top: 50%;
-    left: -20px; /* Adjust position to meet the line from the left, slightly outside the box for shadow */
+    left: -20px;
     transform: translateY(-50%) rotate(45deg);
     width: 30px;
     height: 30px;
@@ -354,7 +397,7 @@ p {
     content: '';
     position: absolute;
     top: 50%;
-    right: -20px; /* Adjust position to meet the line from the right */
+    right: -20px;
     transform: translateY(-50%) rotate(45deg);
     width: 30px;
     height: 30px;
@@ -374,8 +417,8 @@ p {
 }
 
 .chat-excerpt {
-    background-color: #e0f2f7; /* Very light blue */
-    border-left: 5px solid var(--accent-color-1); /* Blue border */
+    background-color: #e0f2f7;
+    border-left: 5px solid var(--accent-color-1);
     padding: 10px 15px;
     margin-top: 15px;
     border-radius: 5px;
@@ -388,56 +431,208 @@ p {
     font-size: 0.95em;
 }
 
-.food-gallery, .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
+/* New Carousel Styles */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-inner img {
+    min-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: none; /* Remove individual image shadows within carousel */
+    object-fit: contain;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.5em;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-dots {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+
+/* Sección de mapa y mensaje del futuro */
+.map-and-message {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    margin-top: 50px;
+}
+
+.map-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.world-map {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.distance-text {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--accent-color-2);
     margin-top: 15px;
 }
 
-/* Specific style for images in galleries to prevent cropping */
-.food-gallery img, .gallery img {
-    width: 100%;
-    height: 100px; /* Fixed height for thumbnails */
-    object-fit: contain; /* IMPORTANT: Ensures images are not cropped, will show full image */
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+.letter-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
 }
 
-.special-note {
-    font-style: italic;
-    font-weight: 600;
+#open-letter-btn {
+    background-color: transparent;
+    border: none;
     color: var(--primary-color);
-    margin-top: 20px;
-    text-align: center;
+    font-size: 2em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: pulse 2s infinite ease-in-out;
 }
 
-.final-message {
-    font-family: 'Dancing Script', cursive; /* Romantic font for final message */
-    font-size: 1.8em;
-    color: var(--primary-color);
-    text-align: center;
-    margin-top: 30px;
+#open-letter-btn p {
+    font-size: 0.8em;
+    margin-top: 5px;
     font-weight: bold;
+    color: var(--primary-color);
 }
 
-.final-message-chinese {
-    font-family: 'Open Sans', sans-serif; /* A more standard font for Chinese */
-    font-size: 1.5em;
-    color: var(--accent-color-1);
+#open-letter-btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.message-box {
+    background-color: #e0f7fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    margin-top: 30px;
+    text-align: left;
+    border: 3px solid var(--accent-color-1);
+}
+
+.message-box h3 {
     text-align: center;
-    margin-top: 10px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
 }
-
 
 /* FOOTER */
 footer {
     text-align: center;
     padding: 30px;
     margin-top: 50px;
-    background-color: var(--accent-color-2); /* Grey background for footer */
+    background-color: var(--accent-color-2);
     color: var(--text-light);
     font-size: 0.9em;
+}
+
+/* Floating Hearts Animation */
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.floating-hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 20px;
+    color: var(--heart-color);
+    animation-name: fall;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
 }
 
 /* MEDIA QUERIES FOR RESPONSIVE (Mobile) */
@@ -477,48 +672,52 @@ footer {
     }
 
     .timeline::before {
-        left: 20px; /* Move the line to the left */
+        left: 20px;
     }
     .timeline-item,
     .timeline-item:nth-child(odd),
     .timeline-item:nth-child(even) {
         flex-direction: column;
         margin-bottom: 60px;
-        padding-left: 0; /* Reset padding for mobile */
-        padding-right: 0; /* Reset padding for mobile */
-        align-items: flex-start; /* Align content to the left */
+        padding-left: 0;
+        padding-right: 0;
+        align-items: flex-start;
     }
 
     .timeline-date {
-        position: relative; /* Make date flow with content */
+        position: relative;
         top: auto;
         transform: none;
         text-align: left;
-        padding-left: 60px; /* Space for icon */
+        padding-left: 60px;
         margin-bottom: 10px;
         flex: none;
         width: auto;
     }
 
     .timeline-icon {
-        left: 20px; /* Align icon with the line */
-        transform: translate(-50%, -50%); /* Realign icon */
-        top: 0; /* Place it at the start of the item in mobile */
+        left: 20px;
+        transform: translate(-50%, -50%);
+        top: 0;
         width: 50px;
         height: 50px;
         font-size: 1.8em;
     }
     
     .timeline-content {
-        margin: 0 10px 0 60px; /* Adjust margins for mobile */
+        margin: 0 10px 0 60px;
     }
 
-    /* Hide arrows on mobile for simplicity */
     .timeline-content::after {
         display: none;
     }
 
-    .food-gallery img, .gallery img {
-        height: 80px; /* Smaller thumbnails on mobile */
+    .carousel-container {
+        max-width: 100%;
     }
-}
+    .carousel-prev, .carousel-next {
+        font-size: 1em;
+        width: 30px;
+        height: 30px;
+    }
+}sss
